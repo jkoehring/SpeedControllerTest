@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1165.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team1165.robot.commands.SetSpeed;
@@ -38,9 +39,18 @@ public class OI
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	
+	private final Joystick speedControllerJoystick = new Joystick(RobotMap.joystickPort0);
+
+	
 	public OI()
 	{
 		SmartDashboard.putNumber("Set Speed", 0.0);
 		SmartDashboard.putData(new SetSpeed());
 	}
+	
+	public double getSpeedControllerSpeed()
+	{
+		return -speedControllerJoystick.getY();
+	}
+
 }
